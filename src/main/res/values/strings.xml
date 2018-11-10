@@ -1,0 +1,49 @@
+<resources>
+
+    <string name="app_name">Speaker Seeker</string>
+    <string name="title_activity_maps">Speaker Seeker</string>
+    <string name="title_activity_login">Log In</string>
+    <string name="title_activity_reset_password">Reset Password</string>
+    <string name="title_activity_main_signup">Speaker Seeker</string>
+    <string name="title_activity_signup_with_email">Sign Up</string>
+
+    <string name="facebook_app_id">257847341581378</string>
+    <string name="fb_login_protocol_scheme">fb257847341581378</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_forgot_password">Forgot Password?</string>
+    <string name="action_sign_in">Log In</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">Enter both credentials</string>
+    <string name="error_auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
+    <string name="lbl_forgot_password">"Forgot Password?" </string>
+    <string name="instructions_forgot_password">"Please, enter your Email to receive the password reset instructions" </string>
+    <string name="action_reset_password">"RESET PASSWORD" </string>
+
+    <!-- Strings related to main sign up -->
+    <string name="action_continue_with_facebook">Continue with Facebook</string>
+    <string name="action_continue_with_google">Continue with Google</string>
+    <string name="action_signup_with_email">Sign up with Email</string>
+    <string name="error_continue_with_facebook">Login attempt with Facebook failed</string>
+    <string name="error_continue_with_google">Login attempt with Google failed</string>
+    <string name="cancel_continue_with_facebook">Login attempt with Facebook canceled</string>
+    <string name="cancel_continue_with_google">Login attempt with Google canceled</string>
+    <string name="lbl_separator">or</string>
+    <string name="action_link_to_login">Already a member? Log in</string>
+
+    <!-- Strings related to sign up with email -->
+    <string name="action_sign_up">Agree and Sign Up</string>
+    <string name="msg_agree_to_terms_of_service">By signing up you are agreeing to our</string>
+    <string name="action_terms_of_service"><u>Terms of Service</u></string>
+    <string name="error_signup_auth_failed">Authentication failed</string>
+    <string name="title_activity_bottom_navig">BottomNavigActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"/>
+
+    <item
+        android:id="@+id/item_help"
+        android:icon="@drawable/ic_help_black_24dp"
+        android:title="Help"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"/>
+
+    <item
+        android:id="@+id/item_chat"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="Chat"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"/>
+
+    <item
+        android:id="@+id/item_profile"
+        android:icon="@drawable/ic_profile_black_24dp"
+        android:title="Profile"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"/>
+
+</menu>
