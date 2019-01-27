@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.UserInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,11 +34,11 @@ public class SignupWithEmailActivity extends AppCompatActivity {
     private FirebaseAuth mAuthentication;
 
     public static final String regEx = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
+    private static final String TAG = SignupWithEmailActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_SignupWithEmail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
@@ -69,7 +72,7 @@ public class SignupWithEmailActivity extends AppCompatActivity {
 
                 if (getEmail.equals("") || getEmail.length() == 0
                         || getPassword.equals("") || getPassword.length() == 0) {
-                    Toast.makeText(SignupWithEmailActivity.this, getString(R.string.error_field_required), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupWithEmailActivity.this, getString(R.string.error_email_and_password_required), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -89,17 +92,21 @@ public class SignupWithEmailActivity extends AppCompatActivity {
                         .addOnCompleteListener(SignupWithEmailActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignupWithEmailActivity.this, getString(R.string.error_signup_auth_failed), Toast.LENGTH_SHORT).show();
+                                    Log.w(TAG, "signUpWithEmailAndPassword:failed", task.getException());
+                                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                        Toast.makeText(SignupWithEmailActivity.this, getString(R.string.error_account_already_exists), Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        Toast.makeText(SignupWithEmailActivity.this, getString(R.string.error_auth_failed), Toast.LENGTH_LONG).show();
+                                    }
                                 } else {
-                                    startActivity(new Intent(SignupWithEmailActivity.this, MapsActivity.class));
+                                    Log.d(TAG, "signUpWithEmailAndPassword:successed");
+                                    startActivity(new Intent(SignupWithEmailActivity.this, CreateUserProfileActivity.class));
+                                    finish();
                                 }
                             }
                         });
-
             }
         });
         mTermsOfServiceButton.setOnClickListener(new View.OnClickListener(){
